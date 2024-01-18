@@ -76,7 +76,7 @@
             <version>1.0</version>
             <scope>system</scope>
 
-            <systemPath>${project.basedir}/src/main/resources/cachejdbc.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/resources/lib/cachejdbc.jar</systemPath>
         </dependency>
     </dependencies>
 

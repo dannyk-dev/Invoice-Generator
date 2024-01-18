@@ -9,12 +9,24 @@
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="User Data Source" uuid="394a03ed-ae69-40a0-b863-349a79f3794a">
-      <driver-ref>java.sql.Driver</driver-ref>
       <synchronize>true</synchronize>
       <configured-by-url>true</configured-by-url>
       <schema-control>MANUAL</schema-control>
       <jdbc-driver>com.intersys.jdbc.CacheDriver</jdbc-driver>
       <jdbc-url>jdbc:Cache://devesse.sercin.co.mz:1972/BASE</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="com.intersys.jdbc.CacheData Source" uuid="6641b47d-6545-470f-a091-5ba40bbb00cd">
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>com.intersys.jdbc.CacheDriver</jdbc-driver>
+      <jdbc-url>jdbc:Cache://devesse.sercin.co.mz:1972/BASE</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+      </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

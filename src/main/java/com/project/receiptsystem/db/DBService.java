@@ -17,7 +17,6 @@ public class DBService {
 
     public void connect() {
         try {
-
             Class.forName("com.intersys.jdbc.CacheDriver");
             CacheDataSource ds = new CacheDataSource();
             ds.setURL(this.url);

@@ -109,8 +109,8 @@ public class InvoiceDocument {
             PdfDocument invoice = this.fileService.getInvoicePDF();
 
             BufferedImage img = invoice
-                    .saveAsImage(0, PdfImageType.Bitmap, 64, 64)
-                    .getSubimage(0, 243, 529, 749);
+                    .saveAsImage(0, PdfImageType.Bitmap, 64, 64);
+//                    .getSubimage(0, 243, 529, 640);
 
             BufferedImage cropped = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
             Graphics g = cropped.createGraphics();
