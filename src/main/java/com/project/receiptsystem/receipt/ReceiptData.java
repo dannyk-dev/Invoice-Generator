@@ -18,4 +18,13 @@ public enum ReceiptData {
     NUIT, // B6
     DOC_NUMBER, // B7
     COMPANY_NUMBER, // B8
+    TOTAL_AMOUNT, // B9
+    TEXT_TO_PRINT, // C1
+    OBSERVATION, //
+    BANK_DETAILS, // C4,
+    BANK_DETAILS_2, // C5
+    BANK_DETAILS_3, // C6
+    P_VAT, // C7
+    DISCOUNT, // C8
+    AMOUNT_W_IVA, // C9
 }
