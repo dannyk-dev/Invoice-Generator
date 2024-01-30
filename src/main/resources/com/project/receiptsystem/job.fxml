@@ -19,7 +19,7 @@
             </ImageView>
             <Group layoutX="625.0" layoutY="20.0">
                <children>
-                  <Button alignment="CENTER_RIGHT" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePrintJob" prefHeight="42.0" prefWidth="116.0" style="-fx-padding: 10px 20px; -fx-background-color: #247BA0; -fx-font-family: &quot;Prompt&quot;; -fx-font-size: 16px;" text="Print" textAlignment="CENTER" textFill="#efefe8">
+                  <Button alignment="CENTER_RIGHT" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleDocumentInspection" prefHeight="42.0" prefWidth="116.0" style="-fx-padding: 10px 20px; -fx-background-color: #247BA0; -fx-font-family: &quot;Prompt&quot;; -fx-font-size: 16px;" text="Print" textAlignment="CENTER" textFill="#efefe8">
                      <font>
                         <Font size="15.0" />
                      </font>

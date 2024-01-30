@@ -16,9 +16,10 @@ public class Product {
             ResultSetMetaData metadata = res.getMetaData();
             ProductData[] constants = ProductData.values();
 
-            for (int i = 1; i < metadata.getColumnCount() - 1; i++)
+            for (int i = 1; i <= metadata.getColumnCount() - 1; i++) {
+//                System.out.println(constants[i - 1] + " " + res.getString(metadata.getColumnName(i + 1)));
                 product.put(constants[i - 1], res.getString(metadata.getColumnName(i + 1)));
-
+            }
         } catch (SQLException e) {
             System.out.println("Could not fetch from database");
             e.printStackTrace();

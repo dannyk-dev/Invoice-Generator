@@ -9,7 +9,7 @@ public enum ProductData {
     QUANTITIES, // A6
     AMOUNT_UNIT, // A7
     TOTAL_AMOUNT, // A8
-    IDK, // A9
+    IDK,
     OTHER, // B1
     DOCUMENT_DATE, // B2
     OTHER_DESCRIPTION, // B3

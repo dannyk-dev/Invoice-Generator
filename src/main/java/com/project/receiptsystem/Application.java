@@ -52,7 +52,7 @@ public class Application extends javafx.application.Application {
 
             cmd = new Commands().parseCommands(args);
             Receipt rcp = controller.fetchByClientId(cmd.getOptionValue("doc"));
-            List<Product> prods = controller.findProductsByDocumentNumber(rcp.getReceipt().get(ReceiptData.DOC_NUMBER));
+            List<Product> prods = controller.findProductsByDocumentNumber(cmd.getOptionValue("doc"));
 
             if (cmd.hasOption("p")) {
                 doc = new InvoiceDocument(rcp, prods);
@@ -60,7 +60,6 @@ public class Application extends javafx.application.Application {
 
                 launch(args);
             }
-
         } catch (Exception e) {
             System.out.println("An error occured while accessing the database");
             e.printStackTrace();

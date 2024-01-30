@@ -55,16 +55,38 @@ public class InvoiceDocument {
 
     private String[][] unpackProducts(List<Product> purchases) {
         DecimalFormat df = new DecimalFormat("###, ###, ###.00 MZN");
+        System.out.println(" Purchases size:  " + purchases.size());
 
-        return purchases
+//        if (purchases.)
+
+        String[][] test = purchases
                 .stream()
-                .map(product -> new String[] {
-                        product.getProduct(ProductData.SEQUENCE),
-                        product.getProduct(ProductData.PRODUCT_DESCRIPTION),
-                        product.getProduct(ProductData.QUANTITIES),
-                        df.format(product.getProduct(ProductData.AMOUNT_UNIT)),
-                        df.format(product.getProduct(ProductData.TOTAL_AMOUNT))
+                .map(product -> {
+                    String sequence = product.getProduct(ProductData.SEQUENCE);
+                    String description = product.getProduct(ProductData.PRODUCT_DESCRIPTION);
+                    String quantities = product.getProduct(ProductData.QUANTITIES);
+
+//                    String amountUnit = df.format(Double.parseDouble(product.getProduct(ProductData.AMOUNT_UNIT)));
+                    String amountUnit = product.getProduct(ProductData.AMOUNT_UNIT);
+                    System.out.println("Amount Unit " + amountUnit);
+
+//                    String totalAmount = df.format(Double.parseDouble(product.getProduct(ProductData.TOTAL_AMOUNT)));
+                    String totalAmount = product.getProduct(ProductData.TOTAL_AMOUNT);
+                    System.out.println("Total Amount " + totalAmount);
+
+                    return new String[]{ sequence, description, quantities, amountUnit, totalAmount };
                 }).toArray(String[][]::new);
+
+        return test;
+    }
+
+    private boolean isValidNumber(String value) {
+        try {
+            Double.parseDouble(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     private void addRows(Table table, int rowNum) {
@@ -109,8 +131,8 @@ public class InvoiceDocument {
             PdfDocument invoice = this.fileService.getInvoicePDF();
 
             BufferedImage img = invoice
-                    .saveAsImage(0, PdfImageType.Bitmap, 64, 64);
-//                    .getSubimage(0, 243, 529, 640);
+                    .saveAsImage(0, PdfImageType.Bitmap, 64, 64)
+                    .getSubimage(0, 243, 529, 640);
 
             BufferedImage cropped = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
             Graphics g = cropped.createGraphics();
