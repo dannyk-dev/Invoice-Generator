@@ -27,7 +27,7 @@ public enum ReceiptData {
     BANK_DETAILS_3, // C6
     P_VAT, // C7
     DISCOUNT, // C8
-    AMOUNT_W_IVA, // C9
+    IVA_AMOUNT, // C9
     UNKOWN, // D1
     PAYMENT_TYPE, // D2
 }

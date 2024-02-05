@@ -11,7 +11,7 @@ import java.nio.file.StandardCopyOption;
 public class FileService {
 
     public String createTemplate() {
-        InputStream inputStream = getClass().getResourceAsStream("/com/project/receiptsystem/Invoice-Template.docx");
+        InputStream inputStream = getClass().getResourceAsStream("com/project/receiptsystem/Invoice-Template.docx");
 
         try {
             // copy contents from jar file and move to outside directory
