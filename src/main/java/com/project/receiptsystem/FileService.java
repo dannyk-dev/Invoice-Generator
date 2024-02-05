@@ -11,10 +11,9 @@ import java.nio.file.StandardCopyOption;
 public class FileService {
 
     public String createTemplate() {
-        InputStream inputStream = getClass().getResourceAsStream("com/project/receiptsystem/Invoice-Template.docx");
+        InputStream inputStream = getClass().getResourceAsStream("/com/project/receiptsystem/Invoice-Template.docx");
 
         try {
-            // copy contents from jar file and move to outside directory
             Path tempFile = Files.createTempFile("Invoice-Template", ".docx");
 
             if (inputStream != null) {
@@ -22,8 +21,8 @@ public class FileService {
                 inputStream.close();
             }
 
-            System.out.println(tempFile.toUri().getPath());
-            return tempFile.toUri().getPath();
+            System.out.println(tempFile.toAbsolutePath());
+            return tempFile.toAbsolutePath().toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,7 +33,7 @@ public class FileService {
     public String appInstallDirectory(String additionalPath) {
         Path workingDirectory = Paths.get(System.getProperty("user.home"), "Receipt_System", "resources", additionalPath);
         System.out.println(workingDirectory.toUri().getPath());
-        return workingDirectory.toUri().getPath();
+        return workingDirectory.toAbsolutePath().toString();
     }
 
     public PdfDocument getInvoicePDF() {
