@@ -17,7 +17,6 @@ public class Product {
             ProductData[] constants = ProductData.values();
 
             for (int i = 1; i <= metadata.getColumnCount() - 1; i++) {
-//                System.out.println(constants[i - 1] + " " + res.getString(metadata.getColumnName(i + 1)));
                 product.put(constants[i - 1], res.getString(metadata.getColumnName(i + 1)));
             }
         } catch (SQLException e) {

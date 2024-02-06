@@ -21,7 +21,6 @@ public class FileService {
                 inputStream.close();
             }
 
-            System.out.println(tempFile.toAbsolutePath());
             return tempFile.toAbsolutePath().toString();
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,7 +31,7 @@ public class FileService {
 
     public String appInstallDirectory(String additionalPath) {
         Path workingDirectory = Paths.get(System.getProperty("user.home"), "Receipt_System", "resources", additionalPath);
-        System.out.println(workingDirectory.toUri().getPath());
+        System.out.println(workingDirectory.toAbsolutePath());
         return workingDirectory.toAbsolutePath().toString();
     }
 
@@ -53,14 +52,12 @@ public class FileService {
 
             if (previewImage.exists() && previewImage.isFile())
                 return previewImage;
-            else
-                System.out.println("File does not exist");
 
+            System.out.println("File does not exist");
         } catch (Exception e) {
             System.out.println("Error: URL Syntax error");
             e.printStackTrace();
         }
-
         return null;
     }
 }

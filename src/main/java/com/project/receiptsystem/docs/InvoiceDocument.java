@@ -17,12 +17,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
-
 
 public class InvoiceDocument {
 
@@ -30,12 +27,11 @@ public class InvoiceDocument {
     private final String[][] purchaseData;
     FileService fileService;
 
-
     public InvoiceDocument(Receipt user, List<Product> purchaseData) {
         this.fileService = new FileService();
         this.purchaseData = this.unpackProducts(purchaseData);
         this.doc = new Document();
-        this.doc.loadFromFile(fileService.createTemplate()); // copy out the invoice template and get path to copy
+        this.doc.loadFromFile(fileService.createTemplate());
         this.setupDocument(user);
     }
 
@@ -55,38 +51,16 @@ public class InvoiceDocument {
 
     private String[][] unpackProducts(List<Product> purchases) {
         DecimalFormat df = new DecimalFormat("###, ###, ###.00 MZN");
-        System.out.println(" Purchases size:  " + purchases.size());
 
-//        if (purchases.)
-
-        String[][] test = purchases
+        return purchases
                 .stream()
-                .map(product -> {
-                    String sequence = product.getProduct(ProductData.SEQUENCE);
-                    String description = product.getProduct(ProductData.PRODUCT_DESCRIPTION);
-                    String quantities = product.getProduct(ProductData.QUANTITIES);
-
-//                    String amountUnit = df.format(Double.parseDouble(product.getProduct(ProductData.AMOUNT_UNIT)));
-                    String amountUnit = product.getProduct(ProductData.AMOUNT_UNIT);
-                    System.out.println("Amount Unit " + amountUnit);
-
-//                    String totalAmount = df.format(Double.parseDouble(product.getProduct(ProductData.TOTAL_AMOUNT)));
-                    String totalAmount = product.getProduct(ProductData.TOTAL_AMOUNT);
-                    System.out.println("Total Amount " + totalAmount);
-
-                    return new String[]{ sequence, description, quantities, amountUnit, totalAmount };
+                .map(product -> new String[]{
+                        product.getProduct(ProductData.SEQUENCE),
+                        product.getProduct(ProductData.PRODUCT_DESCRIPTION),
+                        product.getProduct(ProductData.QUANTITIES),
+                        df.format(product.getProduct(ProductData.AMOUNT_UNIT)),
+                        df.format(product.getProduct(ProductData.TOTAL_AMOUNT)),
                 }).toArray(String[][]::new);
-
-        return test;
-    }
-
-    private boolean isValidNumber(String value) {
-        try {
-            Double.parseDouble(value);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 
     private void addRows(Table table, int rowNum) {
@@ -145,7 +119,4 @@ public class InvoiceDocument {
             e.printStackTrace();
         }
     }
-
-
-
 }

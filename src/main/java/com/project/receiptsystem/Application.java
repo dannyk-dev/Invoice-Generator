@@ -27,9 +27,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         FileService fileService = new FileService();
 
-        // load my custom fonts
         Font.loadFont(getClass().getResourceAsStream("fonts/Prompt-Regular.ttf"), 15);
-
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("job.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 992, 1020);
@@ -42,7 +40,6 @@ public class Application extends javafx.application.Application {
     }
 
     public static void main(String[] args) {
-
         DBService db = new DBService();
         InvoiceDocument doc;
 
@@ -66,37 +63,5 @@ public class Application extends javafx.application.Application {
         } finally {
             db.close();
         }
-    }
-
-    private static void displayData(ArrayList<Receipt> listData) {
-        for (Receipt receipt : listData) {
-            displayReceipt(receipt);
-
-            System.out.println("------------------------------------------------------------------");
-        }
-    }
-
-    private static void displayProductData(List<Product> listData) {
-        for (Product product : listData) {
-            displayProduct(product);
-
-            System.out.println("------------------------------------------------------------------");
-        }
-    }
-
-    private static void displayReceipt(Receipt receiptData) {
-        if (receiptData == null) return;
-
-        System.out.println("------------------------------------------------------------------");
-        for (Map.Entry<ReceiptData, String> item : receiptData.getReceipt().entrySet())
-            System.out.println(item.getKey() + " " + item.getValue());
-    }
-
-    private static void displayProduct(Product productData) {
-        if (productData == null) return;
-
-        System.out.println("------------------------------------------------------------------");
-        for (Map.Entry<ProductData, String> item : productData.getProductList().entrySet())
-            System.out.println(item.getKey() + " " + item.getValue());
     }
 }

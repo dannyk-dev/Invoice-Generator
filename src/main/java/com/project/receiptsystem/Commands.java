@@ -3,10 +3,9 @@ package com.project.receiptsystem;
 import org.apache.commons.cli.*;
 
 public class Commands {
-
     private Options cliOptions;
     private Option id;
-    private Option companyNumber;
+    private Option docNumber;
     private Option print;
 
     public Commands() {
@@ -17,10 +16,10 @@ public class Commands {
         this.id.setRequired(false);
         cliOptions.addOption(this.id);
 
-        // sample: "-c {companyNumber}"
-        this.companyNumber = new Option("doc", "document", true, "Document Number");
-        this.companyNumber.setRequired(true);
-        cliOptions.addOption(this.companyNumber);
+        // sample: "-doc <DocNumber>" -> 8012-DVA
+        this.docNumber = new Option("doc", "document", true, "Document Number");
+        this.docNumber.setRequired(true);
+        cliOptions.addOption(this.docNumber);
 
         this.print = new Option("p", "print", false, "Print Document");
         this.print.setRequired(false);
@@ -41,8 +40,6 @@ public class Commands {
             System.exit(1);
         }
 
-//        return cmd;
         return null;
     }
-
 }

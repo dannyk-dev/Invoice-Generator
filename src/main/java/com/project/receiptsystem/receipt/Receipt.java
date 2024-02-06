@@ -18,7 +18,6 @@ public class Receipt {
             ReceiptData[] constants = ReceiptData.values();
 
             for (int i = 1; i <= metadata.getColumnCount() - 1; i++) {
-//                System.out.println(constants[i - 1] + " " + res.getString(metadata.getColumnName(i + 1)));
                 this.receipt.put(constants[i - 1], res.getString(metadata.getColumnName(i+1)));
             }
         } catch (SQLException e) {
