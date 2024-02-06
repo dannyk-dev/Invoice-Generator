@@ -54,12 +54,18 @@ public class InvoiceDocument {
 
         return purchases
                 .stream()
-                .map(product -> new String[]{
-                        product.getProduct(ProductData.SEQUENCE),
-                        product.getProduct(ProductData.PRODUCT_DESCRIPTION),
-                        product.getProduct(ProductData.QUANTITIES),
-                        df.format(product.getProduct(ProductData.AMOUNT_UNIT)),
-                        df.format(product.getProduct(ProductData.TOTAL_AMOUNT)),
+                .map(product -> {
+                    String sequence = product.getProduct(ProductData.SEQUENCE);
+                    String description = product.getProduct(ProductData.PRODUCT_DESCRIPTION);
+                    String quantities = product.getProduct(ProductData.QUANTITIES);
+
+                    String amountUnit = product.getProduct(ProductData.AMOUNT_UNIT);
+                    System.out.println("Amount Unit " + amountUnit);
+
+                    String totalAmount = product.getProduct(ProductData.TOTAL_AMOUNT);
+                    System.out.println("Total Amount " + totalAmount);
+
+                    return new String[]{ sequence, description, quantities, amountUnit, totalAmount };
                 }).toArray(String[][]::new);
     }
 
@@ -105,8 +111,8 @@ public class InvoiceDocument {
             PdfDocument invoice = this.fileService.getInvoicePDF();
 
             BufferedImage img = invoice
-                    .saveAsImage(0, PdfImageType.Bitmap, 64, 64)
-                    .getSubimage(0, 243, 529, 640);
+                    .saveAsImage(0, PdfImageType.Bitmap, 64, 64);
+//                    .getSubimage(0, 243, 529, 640);
 
             BufferedImage cropped = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
             Graphics g = cropped.createGraphics();

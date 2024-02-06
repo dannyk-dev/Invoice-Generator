@@ -25,8 +25,6 @@ public class DBService {
             this.dbConn = ds.getConnection();
 
             System.out.println("Sucessfully Connected to Database");
-
-
         } catch (SQLException e) {
             System.out.println("Error accessing database");
             System.out.println(e.getMessage());

@@ -32,9 +32,4 @@ public class Product {
     public String getProduct(ProductData selection) {
         return this.product.get(selection);
     }
-
-    public void setProduct(LinkedHashMap<ProductData, String> product) {
-        this.product = product;
-    }
-
 }
