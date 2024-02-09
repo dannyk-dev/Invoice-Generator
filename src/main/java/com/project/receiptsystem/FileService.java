@@ -30,7 +30,7 @@ public class FileService {
     }
 
     public String appInstallDirectory(String additionalPath) {
-        Path workingDirectory = Paths.get(System.getProperty("user.home"), "Receipt_System", "resources", additionalPath);
+        Path workingDirectory = Paths.get(System.getenv("ProgramFiles"), "ReceiptSystem", "resources", additionalPath);
         System.out.println(workingDirectory.toAbsolutePath());
         return workingDirectory.toAbsolutePath().toString();
     }
